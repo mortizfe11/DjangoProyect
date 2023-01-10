@@ -70,7 +70,36 @@ python3 manage.py makemigrations <nombre_de_tu_app>
 ```
 python3 manage.py migrate
 ```
-4. Para verlo
+4. Para ver el SQL que crea la tabla:
 ```
 python3 manage.py sqlmigrate <nombre_de_tu_app> <numero_de_migración>
+```
+
+**SQLITE3**
+1. Teniendo la extensión SQLite
+2. Ejecutamos en Ver del Code: paleta de comandos
+3. En comandos de > Sqlite > Quick Query hacemos
+```
+SELECT * FROM hello_world_app_member;
+``` 
+
+
+# Insetar datos en la BBDD
+1. Abrimos la shell en interativo de Python y Django:
+```
+python3 manage.py shell
+```
+2. Importamos el modelo
+```
+from <nombre_de_la_app>.models import <clase_de_models>
+```
+3. Creamos un objeto.
+Ejemplo:
+```
+from hello_world_app.models import Member
+member = Member(firstname="Fulanito", lastname="Metepatas")
+```
+4. Guardamos con save:
+```
+member.save()
 ```
