@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Hello World - List of all members
+{% endblock %}
+
+
+{% block content %}
+    <h1>Members</h1>
+    
+    <ul>
+    {% for x in my_members %}
+        <li><strong>Name:</strong> <a href="/members/{{x.id}}">{{ x.firstname }} {{ x.lastname }} </a><br/>
+        {% if x.phone %}<strong>Tlf:</strong> {{ x.phone}} <br/>{% endif %}
+        {% if x.joined_date %}<strong>Date:</strong> {{ x.joined_date}}{% endif %}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
