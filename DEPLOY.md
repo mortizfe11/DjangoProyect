@@ -24,3 +24,19 @@ python manage.py migrate
 ```
 python manage.py collectstatic
 ```
+
+VIRTUALENV
+1. Inicias virtualenv con el python
+```
+mkvirtualenv myvirtualenv --python=/usr/bin/python3.10
+which python
+workon myvirtualenv
+```
+2. Configuras con pip install.
+```
+pip install ...
+```
+3. Desactivas virtualenv:
+```
+deactivate
+```
