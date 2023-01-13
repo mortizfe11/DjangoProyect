@@ -7,6 +7,12 @@
 python3 -m venv myworld
 source myworld/bin/activate
 ```
+Virtual environment with pyenv
+```
+pyenv virtualenvs
+pyenv virtualenv <num_version> <name_virtual_env>
+pyenv <name_virtual_env> activate
+```
 2. Instalar Django
 ```
 python3 -m pip install Django
@@ -102,4 +108,34 @@ member = Member(firstname="Fulanito", lastname="Metepatas")
 4. Guardamos con save:
 ```
 member.save()
+```
+
+# Archivos statics:
+1. Añadimos el folder static
+2. Añadimos el archivo .css en static
+
+3. Instalamos whitenoise con:
+```
+pip install whitenoise
+```
+Y lo añadimos en settings.py:
+```
+MIDDLEWARES = [
+    ...
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+] 
+```
+4. Colocamos DEBUG en False (de settings.py):
+```
+DEBUG = False
+```
+6. Creamos la carpeta `productionfiles` dentro del proyecto
+7. Y actualizamos settings.py con la ruta:
+```
+STATIC_ROOT = BASE_DIR / 'productionfiles'
+STATIC_URL = '/static/'
+```
+8. Por último ejecutamos el comando collectstatic en consola para generar todos los archivos para la fase de producción:
+```
+python3 manage.py collectstatic
 ```
