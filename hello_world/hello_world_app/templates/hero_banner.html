@@ -1,0 +1,49 @@
+
+{% block banner %}
+
+<style>
+.hero{
+    position: relative;
+    width: 100vw;
+    height: 60vh;
+}
+.hero::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://via.placeholder.com/1200x800);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero-text{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: black;
+}
+.hero-title{
+    font-weight: 600;
+}
+
+.hero-button{
+    background: #ffc61a;
+    font-size: 1.25em;
+    color: black;
+}
+</style>
+<section class="hero">
+    <div class="container">
+        <div class="col-lg-6 hero-text">
+            <h1 class="display-4 hero-title">Title</h1>
+            <h2 class="lead">Description</h2>
+            <a class="btn btn-lg btn-outline-dark hero-button" href="#">Click Here</a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
