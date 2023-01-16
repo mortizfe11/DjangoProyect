@@ -27,7 +27,7 @@ django-admin startproject codr
 ```
 
 5. Estructura del proyecto:
-
+```
 codr
     manage.py
     codr/
@@ -36,7 +36,7 @@ codr
         settings.py
         urls.py
         wsgi.py
-
+```
 # Servidor de desarrollo
 Abre por defecto en localhost puerto 8000.
 ```
