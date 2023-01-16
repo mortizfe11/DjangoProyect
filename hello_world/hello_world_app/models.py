@@ -1,6 +1,10 @@
 from django.db import models
+import uuid
 
 # Create your models here.
+
+def generate_slug_hash():
+    return str(uuid.uuid1())[:8]
 
 class Member(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -8,6 +12,7 @@ class Member(models.Model):
     lastname = models.CharField(max_length=255)
     phone = models.CharField(max_length=20, null=True)
     joined_date = models.DateField(null=True)
+    slugh_hash = models.CharField(max_length=8,default=generate_slug_hash, null=False)
     slug = models.SlugField(default="", null=False)
 
     def __str__(self):
