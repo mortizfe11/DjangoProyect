@@ -10,7 +10,7 @@ def generate_slug_hash():
     return str(uuid.uuid1())[:8]
 
 class Member(models.Model):
-    #id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     firstname = models.CharField(max_length=255) #campo de texto. 
     lastname = models.CharField(max_length=255)
     phone = models.CharField(max_length=20, null=True)

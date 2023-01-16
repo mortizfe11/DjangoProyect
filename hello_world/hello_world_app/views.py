@@ -37,13 +37,22 @@ def update_member(request, slug):
   msg, error = None, None
 
   my_member = Member.objects.get(slug=slug)
-  if request.method == 'PUT':
-    form = UpdateMemberForm(request.PUT)
+  if request.method == 'POST':
+    form = UpdateMemberForm(request.POST)
     if form.is_valid():
-      member = form.save(commit=False)
-      #member.slug_hash = generate_slug_hash()
-      #member.slug = f"{member.firstname}-{member.lastname}-{generate_slug_hash()}"
-      member.save()
+      firstname, lastname, phone = form.cleaned_data.values()
+
+      if firstname != my_member.firstname and firstname != '':
+        my_member.firstname = firstname
+      if lastname != my_member.lastname and lastname != '':
+        my_member.lastname = lastname
+      if phone != my_member.phone and phone != '':
+        my_member.phone = phone
+      #print(member, my_member.slugh_hash)
+      _, _, slug_hash = slug.split("-")
+
+      my_member.slug = f"{firstname.lower()}-{lastname.lower()}-{slug_hash}"
+      my_member.save()
       msg = "Member updated!"
 
     else:
