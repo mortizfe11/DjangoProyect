@@ -120,7 +120,7 @@ python3 manage.py createsuperuser
 # Cambiamos contraseña
 
 ```
-python3 manage.py changepassword <nombre_de_usuario>
+python3 manage.py changepassword <nombre_de_usuariog>
 ```
 
 # Archivos statics:
