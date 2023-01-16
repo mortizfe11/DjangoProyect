@@ -5,14 +5,23 @@
 {% endblock %}
 
 {% block content %}
-  <div class="mycard">
+
+<div class="mycard">
     <h1>Members</h1>
+
+    {% if my_members %}
     <ul>
       {% for member in my_members %}
         <li onclick="window.location = '/members/{{ member.slug }}'">{{ member.firstname }} {{ member.lastname }}</li>
       {% endfor %}
     </ul>
+
+    {% else %}
+      <p>No hay miembros en la bdd.</p>
+    {% endif %}
   </div>
+  <p class="text-center">Go to <a href="/members/create">Create</a></p>
+
 {% endblock %}
 
 {% comment %}
@@ -30,6 +39,5 @@
     {% else %}
       <p>No hay miembros en la bdd.</p>
     {% endif %}
-
 {% endblock %}
 {% endcomment %}

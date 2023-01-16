@@ -6,6 +6,29 @@
 
 
 {% block content %}
-
-
+<div class="col-8 mx-auto">
+    {% if msg %}
+        <div class="alert alert-success">
+            {{ msg}}
+        </div>
+    {% endif %}    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}   
+    {% if not msg and not error %}
+    <h1>Update Member</h1>
+    <form action="{% url 'update_member' slug %}" method="put">
+        {% csrf_token %}
+        First Name:<br>
+        <input name="first" value="{{ my_member.firstname }}">
+        <br><br>
+        Last Name:<br>
+        <input name="last" value="{{ my_member.lastname }}">
+        <br><br>
+        <input type="submit" class="btn btn-primary" value="Update Member">
+    </form>
+    {% endif %}
+</div>
 {% endblock %}
