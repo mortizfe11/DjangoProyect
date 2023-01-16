@@ -56,11 +56,10 @@ li:hover {
 a:link, a:visited {
   color: #375BDC; 
 }
-/**
-.main, .main h1 {
-  text-align:center;
+h1 {
   color:#375BDC;
-}**/
+  font-size: 2em;
+}
 
 /** HERO **/
 

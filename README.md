@@ -117,7 +117,11 @@ python3 manage.py createsuperuser
 ```
 2. Pruebas en loggearte en url/admin
 
+# Cambiamos contraseña
 
+```
+python3 manage.py changepassword <nombre_de_usuario>
+```
 
 # Archivos statics:
 1. Añadimos el folder static
