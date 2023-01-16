@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-myworld/*
+myenv/*
 .pyenv.cfg
 
 hello_world/productionfiles/

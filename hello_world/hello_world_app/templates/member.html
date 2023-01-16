@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ my_member.firstname }} {{ my_member.lastname }}</h1>
-    
-    {% if my_member.phone %}<p>Phone: {{ my_member.phone }}</p>{% endif %}
-    {% if my_member.joined_date %}<p>Member since: {{ my_member.joined_date }}</p>{% endif %}
 
+    <div class="mycard">
+        <h1>{{ my_member.firstname }} {{ my_member.lastname }}</h1>
+        
+        {% if my_member.phone %}<p>Phone: {{ my_member.phone }}</p>{% endif %}
+        {% if my_member.joined_date %}<p>Member since: {{ my_member.joined_date }}</p>{% endif %}
+    </div>
     <p>Back to <a href="/members">Members</a></p>
+    
   
 {% endblock %}

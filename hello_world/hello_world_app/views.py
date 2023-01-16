@@ -16,7 +16,7 @@ def all_members(request):
     'my_members': my_members,
   }
   return HttpResponse(template.render(context, request))
-
+'''
 def member(request, id):
   if id > 0 and isinstance(id, int):
     try:
@@ -32,7 +32,14 @@ def member(request, id):
  
   else:
     return HttpResponse(f"The number {id} is incorrect.")
-  
+'''
+def member(request, slug):
+  my_member = Member.objects.get(slug=slug)
+  template = loader.get_template('member.html')
+  context = {
+    'my_member': my_member,
+  }
+  return HttpResponse(template.render(context, request))
 
 def main(request):
   template = loader.get_template('main.html')

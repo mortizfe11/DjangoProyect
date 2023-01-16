@@ -110,6 +110,15 @@ member = Member(firstname="Fulanito", lastname="Metepatas")
 member.save()
 ```
 
+# Creamos un superusuario
+1. Ejecutamos en línea de comandos el siguiente comando:
+```
+python3 manage.py createsuperuser
+```
+2. Pruebas en loggearte en url/admin
+
+
+
 # Archivos statics:
 1. Añadimos el folder static
 2. Añadimos el archivo .css en static
