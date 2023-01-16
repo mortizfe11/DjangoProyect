@@ -5,6 +5,6 @@ from .models import Member
 
 class MemberAdmin(admin.ModelAdmin):
     list_display = ("id","firstname", "lastname", "phone", "joined_date")
-    prepopulated_fields = {"slug": ("firstname", "lastname")}
+    prepopulated_fields = {"slug": ("firstname", "lastname")} #auto-rellena el campo slug con firstname-lastname
 
 admin.site.register(Member, MemberAdmin)
