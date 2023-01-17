@@ -11,8 +11,13 @@
         
         {% if my_member.phone %}<p>Phone: {{ my_member.phone }}</p>{% endif %}
         {% if my_member.joined_date %}<p>Member since: {{ my_member.joined_date }}</p>{% endif %}
+        
+        
+        <p class="row">
+            <a class="col mx-1 btn btn-orange text-white" href="/members/update/{{my_member.slug}}"><i class="bi bi-person-gear"></i> Update</a> 
+            <a class="col mx-1 btn btn-danger text-white" href="/members/delete/{{my_member.slug}}"><i class="bi bi-person-dash"></i> Delete</a>
+        </p>
+    
     </div>
-    <p class="text-center">Back to <a href="/members">Members</a> | 
-    <a href="/members/update/{{my_member.slug}}">Update</a></p>
-  
+    <p class="text-center">Back to <a href="/members">Members</a></p>
 {% endblock %}

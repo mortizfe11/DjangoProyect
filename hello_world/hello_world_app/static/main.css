@@ -5,6 +5,20 @@ body {
   letter-spacing: 0.64px;
   color: #585d74;
 }
+
+/** DEFINE NEW BUTTON **/
+.btn-orange{
+  background-color: #dc6435;
+  border-color: #dc6435;
+  color: white;
+}
+
+.btn-orange:hover, .btn-orange:focus, .btn-orange:active, .btn-orange.active, .open .dropdown-toggle.btn-orange {
+  background-color: #c65a2f;
+  color:#FFF;
+ }
+
+ /** BARRA DE NAVEGACIÓN **/
 .topnav {
   background-color:#375BDC;
   color:#ffffff;
@@ -13,9 +27,6 @@ body {
 .topnav a:link, .topnav a:visited {
   text-decoration: none;
   color: #ffffff; 
-}
-.topnav a:hover, .topnav a:active {
-  text-decoration: underline;
 }
 .mycard {
   background-color: #f1f1f1;

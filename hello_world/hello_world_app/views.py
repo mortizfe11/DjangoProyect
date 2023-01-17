@@ -18,9 +18,8 @@ def create_member(request):
     form = CreateMemberForm(request.POST)
     if form.is_valid():
       member = form.save(commit=False) #commit = False porque no lo queremos guardar todavía
-      #member.joined_date = get_time_today()
       member.slug_hash = generate_slug_hash()
-      member.slug = generate_slug(member.firstname, member.lastname, member.slug_hashh)
+      member.slug = generate_slug(member.firstname, member.lastname, member.slug_hash)
       member.save()
       msg = "Member created!"
 
@@ -74,6 +73,24 @@ def update_member(request, slug):
     'error' :error
   }
   return render(request, 'update_member.html', context)
+
+def delete_member(request, slug):
+  my_member = Member.objects.get(slug=slug)
+  if request.method == 'GET':
+    template = loader.get_template('delete_member.html')
+    context = {
+      'my_member': my_member,
+    }
+    return HttpResponse(template.render(context, request))
+  elif request.method == 'POST':
+    my_member.delete()
+    template = loader.get_template('delete_member.html')
+    msg = f'{my_member} Deleted.'
+    context = {
+      'msg': msg,
+    }
+    return HttpResponse(template.render(context, request))
+  
 
 def all_members(request):
   my_members = Member.objects.all().values()

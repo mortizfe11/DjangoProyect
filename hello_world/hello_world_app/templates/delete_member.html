@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Delete Member
+{% endblock %}
+
+
+{% block content %}
+<div class="col-8 mx-auto">
+    {% if msg %}
+        <div class="alert alert-success">
+            {{ msg}}
+        </div>
+    {% endif %}    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}   
+    {% if not msg and not error and my_member %}
+    <form action="{% url 'delete_member' my_member.slug %}" method="post">
+        {% csrf_token %}
+        <h1>Are You soure delete a Member?</h1>
+        <input type="submit" class="btn btn-success text-white" value="YES">    
+        <button class="btn btn-danger text-white" onclick="window.location = '/members/{{ member.slug }}'">NO</button>
+    </form>
+    <div class="mycard">
+        <h1>{{ my_member.firstname }} {{ my_member.lastname }}</h1>
+        
+        {% if my_member.phone %}<p>Phone: {{ my_member.phone }}</p>{% endif %}
+        {% if my_member.joined_date %}<p>Member since: {{ my_member.joined_date }}</p>{% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
