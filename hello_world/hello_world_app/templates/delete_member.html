@@ -22,7 +22,7 @@
         {% csrf_token %}
         <h1>Are You soure delete a Member?</h1>
         <input type="submit" class="btn btn-success text-white" value="YES">    
-        <button class="btn btn-danger text-white" onclick="window.location = '/members/{{ member.slug }}'">NO</button>
+        <button class="btn btn-danger text-white" onclick="window.location = '/members/{{ member.slug }}'">NO</a>
     </form>
     <div class="mycard">
         <h1>{{ my_member.firstname }} {{ my_member.lastname }}</h1>

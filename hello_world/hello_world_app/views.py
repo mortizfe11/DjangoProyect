@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Member, generate_slug_hash, get_time_today
+from .models import Member, generate_slug_hash
 from .forms import CreateMemberForm, UpdateMemberForm
 
 def generate_slug(firstname, lastname, slug_hash):
@@ -67,38 +67,35 @@ def update_member(request, slug):
   return render(request, 'update_member.html', context)
 
 def delete_member(request, slug):
-  my_member = Member.objects.get(slug=slug)
+  my_member = get_object_or_404(Member, slug=slug)
   if request.method == 'GET':
-    template = loader.get_template('delete_member.html')
     context = {
       'my_member': my_member,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'delete_member.html', context)
   elif request.method == 'POST':
     my_member.delete()
-    template = loader.get_template('delete_member.html')
     msg = f'{my_member} Deleted.'
     context = {
       'msg': msg,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'delete_member.html', context)
   
 
 def all_members(request):
   my_members = Member.objects.all().values()
-  template = loader.get_template('all_members.html')
   context = {
     'my_members': my_members,
   }
-  return HttpResponse(template.render(context, request))
+  return render(request, 'all_members.html', context)
 
 def member(request, slug):
-  my_member = Member.objects.get(slug=slug)
-  template = loader.get_template('member.html')
+  my_member = get_object_or_404(Member, slug=slug)
   context = {
     'my_member': my_member,
   }
-  return HttpResponse(template.render(context, request))
+  
+  return render(request, 'member.html', context)
 
 def main(request):
   template = loader.get_template('main.html')

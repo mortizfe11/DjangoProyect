@@ -14,10 +14,10 @@
         
         
         <p class="row">
-            <a class="col mx-1 btn btn-orange text-white" href="/members/update/{{my_member.slug}}"><i class="bi bi-person-gear"></i> Update</a> 
-            <a class="col mx-1 btn btn-danger text-white" href="/members/delete/{{my_member.slug}}"><i class="bi bi-person-dash"></i> Delete</a>
+            <a class="col mx-1 btn btn-orange text-white" href="{% url 'update_member' my_member.slug %}"><i class="bi bi-person-gear"></i> Update</a> 
+            <a class="col mx-1 btn btn-danger text-white" href="{% url 'delete_member' my_member.slug %}"><i class="bi bi-person-dash"></i> Delete</a>
         </p>
     
     </div>
-    <p class="text-center">Back to <a href="/members">Members</a></p>
+    <ul><li class="text-center">Back to <a href="{% url 'all_members' %}">Members</a></li></ul>
 {% endblock %}
