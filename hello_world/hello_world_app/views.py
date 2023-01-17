@@ -4,6 +4,10 @@ from django.template import loader
 from .models import Member, generate_slug_hash, get_time_today
 from .forms import CreateMemberForm, UpdateMemberForm
 
+def generate_slug(firstname, lastname, slug_hash):
+  return f"{firstname}-{lastname}-{slug_hash}".lower().replace(" ", "")
+      
+
 def hello_world(request):
     template = loader.get_template("hello_world.html")
     return HttpResponse(template.render())
@@ -14,9 +18,9 @@ def create_member(request):
     form = CreateMemberForm(request.POST)
     if form.is_valid():
       member = form.save(commit=False) #commit = False porque no lo queremos guardar todavía
-      member.joined_date = get_time_today()
+      #member.joined_date = get_time_today()
       member.slug_hash = generate_slug_hash()
-      member.slug = f"{member.firstname}-{member.lastname}-{generate_slug_hash()}"
+      member.slug = generate_slug(member.firstname, member.lastname, member.slug_hashh)
       member.save()
       msg = "Member created!"
 
@@ -40,7 +44,7 @@ def update_member(request, slug):
   if request.method == 'POST':
     form = UpdateMemberForm(request.POST)
     if form.is_valid():
-      firstname, lastname, phone = form.cleaned_data.values()
+      '''firstname, lastname, phone = form.cleaned_data.values()
 
       if firstname != my_member.firstname and firstname != '':
         my_member.firstname = firstname
@@ -48,10 +52,12 @@ def update_member(request, slug):
         my_member.lastname = lastname
       if phone != my_member.phone and phone != '':
         my_member.phone = phone
+      '''
+      for field in form.cleaned_data:
+        setattr(my_member, field, form.cleaned_data[field])
       #print(member, my_member.slugh_hash)
-      _, _, slug_hash = slug.split("-")
-
-      my_member.slug = f"{firstname.lower()}-{lastname.lower()}-{slug_hash}"
+      slug_hash = slug[slug.rfind("-")+1:]
+      my_member.slug = generate_slug(my_member.firstname, my_member.lastname, slug_hash)
       my_member.save()
       msg = "Member updated!"
 
