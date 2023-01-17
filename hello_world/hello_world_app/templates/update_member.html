@@ -19,7 +19,7 @@
     {% endif %}   
     {% if not msg and not error %}
     <h1>Update Member</h1>
-    <form action="{% url 'update_member' my_member.slug %}" method="post">
+    <form action="{% url 'update_member' my_member.slug %}" method="post" novalidate>
         {% csrf_token %}
         <fieldset>
             <label for="lastname">First Name:</label>

@@ -8,6 +8,10 @@ class CreateMemberForm(forms.ModelForm):
 
 
 class UpdateMemberForm(forms.ModelForm):
+    firstname = forms.CharField(required=False)
+    lastname = forms.CharField(required=False)
+    phone = forms.CharField(required=False)
+    
     class Meta:
         model = Member
         fields = ('firstname', 'lastname', 'phone',)

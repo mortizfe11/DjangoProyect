@@ -43,18 +43,10 @@ def update_member(request, slug):
   if request.method == 'POST':
     form = UpdateMemberForm(request.POST)
     if form.is_valid():
-      '''firstname, lastname, phone = form.cleaned_data.values()
-
-      if firstname != my_member.firstname and firstname != '':
-        my_member.firstname = firstname
-      if lastname != my_member.lastname and lastname != '':
-        my_member.lastname = lastname
-      if phone != my_member.phone and phone != '':
-        my_member.phone = phone
-      '''
       for field in form.cleaned_data:
-        setattr(my_member, field, form.cleaned_data[field])
-      #print(member, my_member.slugh_hash)
+        if form.cleaned_data[field]:
+          setattr(my_member, field, form.cleaned_data[field])
+          
       slug_hash = slug[slug.rfind("-")+1:]
       my_member.slug = generate_slug(my_member.firstname, my_member.lastname, slug_hash)
       my_member.save()
