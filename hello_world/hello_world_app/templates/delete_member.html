@@ -18,17 +18,15 @@
         </div>
     {% endif %}   
     {% if not msg and not error and my_member %}
-    <form action="{% url 'delete_member' my_member.slug %}" method="post">
-        {% csrf_token %}
-        <h1>Are You soure delete a Member?</h1>
-        <input type="submit" class="btn btn-success text-white" value="YES">    
-        <button class="btn btn-danger text-white" onclick="window.location = '/members/{{ member.slug }}'">NO</a>
-    </form>
-    <div class="mycard">
-        <h1>{{ my_member.firstname }} {{ my_member.lastname }}</h1>
-        
-        {% if my_member.phone %}<p>Phone: {{ my_member.phone }}</p>{% endif %}
-        {% if my_member.joined_date %}<p>Member since: {{ my_member.joined_date }}</p>{% endif %}
+
+    <div class="row text-center mt-4 mb-0">
+        <h2 class="mb-3">Are you sure delete {{my_member}}?</h2>
+        <form action="{% url 'hello_world:delete_member' my_member.slug %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="py-2 px-3 btn btn-success text-white" value="YES">   
+            <input type="submit" class="py-2 px-3 btn btn-danger text-white" formaction="{% url 'hello_world:detail_member' my_member.slug %}" value="NO">
+        </form>
+
     </div>
     {% endif %}
 </div>

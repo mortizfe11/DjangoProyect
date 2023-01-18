@@ -10,7 +10,7 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="{% static 'bootstrap-icons.css' %}">
-  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="{% static 'hello_world_app/main.css' %}">
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
   <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 </head>
@@ -23,9 +23,9 @@
   <div class="col-md-8 col-lg-10 p-4">
   
     <div class="topnav mb-2">
-      <a class="text-decoration-none" href="{% url 'main' %}">HOME</a> |
-      <a class="text-decoration-none" href="{% url 'all_members' %}">MEMBERS</a> |
-      <a class="text-decoration-none" href="{% url 'create_member' %}"><i class="bi bi-person-add"></i> CREATE</a>
+      <a class="text-decoration-none" href="{% url 'hello_world:main' %}">HOME</a> |
+      <a class="text-decoration-none" href="{% url 'hello_world:all_members' %}">MEMBERS</a> |
+      <a class="text-decoration-none" href="{% url 'hello_world:create_member' %}"><i class="bi bi-person-add"></i> CREATE</a>
     </div>
   {% block content %}
 

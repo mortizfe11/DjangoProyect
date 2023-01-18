@@ -20,24 +20,8 @@
       <p>No hay miembros en la bdd.</p>
     {% endif %}
   </div>
-  <ul><li class="text-center">Go to <a href="{% url 'create_member' %}">Create</a></li></ul>
+  <ul class="col-md-8 col-lg-10 mx-auto">
+    <li class="text-center">Go to <a href="{% url 'hello_world:create_member' %}">Create</a></li>
+  </ul>
 
 {% endblock %}
-
-{% comment %}
-{% block content %}
-    <h1>Members</h1>
-    
-    {% if my_members %}
-      <ul>
-      {% for x in my_members %}
-          <li><strong>Name:</strong> <a href="/members/{{x.id}}">{{ x.firstname }} {{ x.lastname }} </a><br/>
-          {% if x.phone %}<strong>Tlf:</strong> {{ x.phone}} <br/>{% endif %}
-          {% if x.joined_date %}<strong>Date:</strong> {{ x.joined_date}}{% endif %}</li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      <p>No hay miembros en la bdd.</p>
-    {% endif %}
-{% endblock %}
-{% endcomment %}
