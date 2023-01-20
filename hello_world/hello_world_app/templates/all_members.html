@@ -8,6 +8,13 @@
 
 <div class="mycard">
     <h1>Members</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     {% if my_members %}
     <ul>
@@ -20,8 +27,5 @@
       <p>No hay miembros en la bdd.</p>
     {% endif %}
   </div>
-  <ul class="col-md-8 col-lg-10 mx-auto">
-    <li class="text-center">Go to <a href="{% url 'hello_world:create_member' %}">Create</a></li>
-  </ul>
-
+  <a href="{% url 'hello_world:create_member' %}"><ul class="col-md-8 col-lg-10 mx-auto"><li class="text-center">Go to Create</li></ul></a>
 {% endblock %}

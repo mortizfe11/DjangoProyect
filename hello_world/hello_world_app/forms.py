@@ -2,6 +2,8 @@ from .models import Member
 from django import forms 
 
 class CreateMemberForm(forms.ModelForm):
+    phone = forms.CharField(required=False)
+    
     class Meta:
         model = Member
         fields = ('firstname', 'lastname', 'phone',)
