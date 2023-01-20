@@ -132,5 +132,7 @@ myenv/*
 .pyenv.cfg
 
 hello_world/productionfiles/
+codr/productionfiles/
+class_basics/productionfiles/
 
 secret_key.txt
