@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+{% if animals %}
+<ul>
+    {% for animal in animals %}
+        <li> {{animal.name}} - {{animal.species}} - {{animal.sound}}</li>
+    
+    {% endfor %}
+
+</ul>
+{% else %}
+<p> No animals.</p>
+{% endif %}
+
+{% endblock %}
