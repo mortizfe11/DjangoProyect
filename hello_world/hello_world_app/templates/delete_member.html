@@ -7,17 +7,6 @@
 
 {% block content %}
 <div class="col-8 mx-auto">
-    {% if msg %}
-        <div class="alert alert-success">
-            {{ msg}}
-        </div>
-        <a href="{% url 'hello_world:all_members' %}"><ul class="col-md-8 col-lg-10 mx-auto"><li class="text-center">All members</li></ul></a>
-    {% endif %}    
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error }}
-        </div>
-    {% endif %}   
     {% if not msg and not error and my_member %}
 
     <div class="row text-center mt-4 mb-0">

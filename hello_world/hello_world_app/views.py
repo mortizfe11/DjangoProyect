@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
@@ -12,15 +12,21 @@ def create_member(request):
   msg, error = None, None
   if request.method == 'POST':
     form = CreateMemberForm(request.POST)
+
+    title = "Create member"
     if form.is_valid():
       member = form.save(commit=False) #commit = False porque no lo queremos guardar todavía
       member.slug_hash = generate_slug_hash()
       member.slug = generate_slug(member.firstname, member.lastname, member.slug_hash)
       member.save()
       msg = "Member created!"
+      # redirect('hello_world:success', msg = msg)
+      return render(request, 'success.html',  {'msg': msg, 'title': title})
 
     else:
       error = 'Form invalid'
+      # redirect('hello_world:success', msg = msg)
+      return render(request, 'failure.html',  {'error': error, 'title': title})
     
   elif request.method == 'GET':     
       form = CreateMemberForm()
@@ -53,7 +59,8 @@ def update_member(request, slug):
           'msg' : msg,
           'error' :error
           }
-  
+      title = 'Update member'
+      return render(request, 'success.html',  {'msg': msg, 'title': title})
     else:
       error = 'Form invalid'
     
@@ -78,16 +85,15 @@ def delete_member(request, slug):
   elif request.method == 'POST':
     my_member.delete()
     msg = f'{my_member} Deleted.'
-    context = {
-      'msg': msg,
-    }
-    return render(request, 'delete_member.html', context)
+    title = "Delete member"
+    # redirect('hello_world:success', msg = msg)
+    return render(request, 'success.html',  {'msg': msg, 'title': title})
     #return HttpResponseRedirect(reverse('hello_world:delete_member', wargs={'msg': msg}))
 
 class MemberDeleteView(generic.DeleteView):
   model = Member
   template_name = "delete_member.html"
-  success_url = reverse_lazy('hello_world:all_members')
+  success_url = reverse_lazy('hello_world:success')
   context_object_name = 'my_member'
   success_message = "%(name)s was created successfully"
 
@@ -100,7 +106,6 @@ class MemberDeleteView(generic.DeleteView):
         cleaned_data,
         name=self.object.__str__(),
         )
-      print("PATATA", msg)
       return msg
 
   '''

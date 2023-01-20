@@ -11,5 +11,6 @@ urlpatterns = [
     path('members/update/<slug:slug>', views.update_member, name='update_member'),
     path('members/delete/<slug:slug>', views.delete_member, name='delete_member'),
     path('members/<slug:slug>/', views.MemberView.as_view(), name='detail_member'),
+    path('members/success/', views.MemberView.as_view(), name='success'),
 
 ]

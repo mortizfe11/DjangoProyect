@@ -6,18 +6,7 @@
 
 
 {% block content %}
-<div class="col-8 mx-auto">
-    {% if msg %}
-        <div class="alert alert-success">
-            {{ msg}}
-        </div>
-        <a href="{% url 'hello_world:all_members' %}"><ul class="col-md-8 col-lg-10 mx-auto"><li class="text-center">Back to members</li></ul></a>
-    {% endif %}    
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error }}
-        </div>
-    {% endif %}   
+<div class="col-8 mx-auto"> 
     {% if not msg and not error %}
     <h1>Update Member</h1>
     <form action="{% url 'hello_world:update_member' my_member.slug %}" method="post" novalidate>
