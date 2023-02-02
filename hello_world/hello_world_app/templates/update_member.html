@@ -9,22 +9,22 @@
 <div class="col-8 mx-auto"> 
     {% if not msg and not error %}
     <h1>Update Member</h1>
-    <form action="{% url 'hello_world:update_member' my_member.slug %}" method="post" novalidate>
+    <form action="{% url 'hello_world:update_member' member.slug %}" method="post" novalidate>
         {% csrf_token %}
         <fieldset>
             <label for="lastname">First Name:</label>
-            <input class="form-control" type="text" name="firstname" value="{{ my_member.firstname }}">
-            <p><small>{{ my_member.firstname }}</small></p>
+            <input class="form-control" type="text" name="firstname" value="{{ member.firstname }}">
+            <p><small>{{ member.firstname }}</small></p>
         </fieldset>
         <fieldset>
             <label for="lastname">Last Name:</label>
-            <input class="form-control" type="text" name="lastname" value="{{ my_member.lastname }}">
-            <p><small>{{ my_member.lastname }}</small></p>
+            <input class="form-control" type="text" name="lastname" value="{{ member.lastname }}">
+            <p><small>{{ member.lastname }}</small></p>
         </fieldset>
         <fieldset>
             <label for="phone">Phone:</label>
-            <input class="form-control" type="text" name="phone" value="{{ my_member.phone }}">
-            <p><small>{{ my_member.phone }}</small></p>
+            <input class="form-control" type="text" name="phone" value="{{ member.phone }}">
+            <p><small>{{ member.phone }}</small></p>
         </fieldset>
         <input type="submit" class="btn btn-primary" value="Update Member">
     </form>

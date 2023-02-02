@@ -6,10 +6,12 @@
 
 {% block content %}
 <div class="col-8 mx-auto">
-    {% if msg %}
-        <div class="alert alert-success">
-            {{ msg}}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+                {{ message}}
         </div>
+        {% endfor %}
     {% endif %}
     <a href="{% url 'hello_world:all_members' %}"><ul class="col-md-8 col-lg-10 mx-auto"><li class="text-center">Back to members</li></ul></a>
 </div>
